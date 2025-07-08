@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Compass – Shape Animation</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #fff;
+      font-family: 'Courier New', monospace;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    .line-container {
+      position: relative;
+      text-align: center;
+      font-size: 1.4em;
+      margin-bottom: 20px;
+      z-index: 2;
+    }
+
+    .shape {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      animation: spin 2s linear infinite;
+      opacity: 0.3;
+      top: -60px;
+      left: calc(50% - 20px);
+    }
+
+    .wave {
+      border-radius: 0;
+      border: none;
+      background: repeating-linear-gradient(
+        45deg,
+        #003366,
+        #003366 5px,
+        #000 5px,
+        #000 10px
+      );
+      width: 60px;
+      height: 20px;
+      animation: wave 1s ease-in-out infinite;
+      top: -50px;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes wave {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .line {
+      opacity: 0;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .dark-sea {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb') center/cover no-repeat;
+      filter: brightness(0.4);
+      z-index: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="dark-sea"></div>
+
+<div class="line-container">
+  <div id="shape" class="shape"></div>
+  <div id="line" class="line"></div>
+</div>
+
+<script>
+  const lines = [
+    "When it snapped",
+    "My compass was swallowed by the sea",
+    "My compass was swallowed by the sea",
+    "I curse this relationship between you and me",
+    "I wanted blood",
+    "I wanted black and white",
+    "Clear-cut",
+    "Your evils predefined",
+    "Your evils predefined",
+    "Hold on tight",
+    "My compass is curiosity",
+    "My compass is curiosity",
+    "I'm piercing through the rope that strangled you and me",
+    "Let us be free"
+  ];
+
+  const lineDiv = document.getElementById("line");
+  const shapeDiv = document.getElementById("shape");
+  let i = 0;
+
+  function showNextLine() {
+    if (i >= lines.length) return;
+
+    lineDiv.text
