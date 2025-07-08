@@ -1,0 +1,12 @@
+.scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+  z-index: 0;
+}
+
+.scene > * {
+  position: relative;
+  z-index: 1;
+}
